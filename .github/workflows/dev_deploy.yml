@@ -20,7 +20,7 @@ jobs:
           java-version: 17 # (5).자바 설치
           distribution: 'adopt'
 
-      - name: Set Environment - Common Yml
+      - name: Set Environment
         uses: microsoft/variable-substitution@v1
         with:
           files: ./src/main/resources/application.yml
@@ -29,6 +29,7 @@ jobs:
           spring.datasource.username: ${{ secrets.AWS_DB_USERNAME }}
           spring.datasource.password: ${{ secrets.AWS_DB_PASSWORD }}
           spring.datasource.url: ${{ secrets.AWS_DB_URL }}
+          spring.profiles.active: dev
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
         shell: bash # (6).권한 부여
