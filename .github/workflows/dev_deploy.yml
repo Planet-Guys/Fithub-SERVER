@@ -20,27 +20,21 @@ jobs:
           java-version: 17 # (5).자바 설치
           distribution: 'adopt'
 
-      #      - name: Set Environment - Common Yml
-      #        uses: microsoft/variable-substitution@v1
-      #        with:
-      #          files: ./src/main/resources/application.yml
-      #        env:
-      #          oauth.kakao.base-url: ${{ secrets.KAKAO_BASE_URL }}
-      #          oauth.kakao.client-id: ${{ secrets.KAKAO_CLIENT }}
-      #          oauth.kakao.client-secret: ${{ secrets.KAKAO_SECRET }}
-      #          oauth.kakao.redirect-url: ${{ secrets.KAKAO_REDIRECT }}
-      #          oauth.kakao.app-id: ${{ secrets.KAKAO_APP_ID }}
-      #          oauth.kakao.admin-key: ${{ secrets.KAKAO_ADMIN_KEY }}
-      #          jwt.secret: ${{ secrets.JWT_SECRET_KEY }}
-      #          jwt.refresh: ${{ secrets.JWT_REFRESH_KEY }}
-      #          cool-sms.api-key: ${{ secrets.COOL_SMS_API_KEY }}
-      #          cool-sms.api-secret: ${{ secrets.COOL_SMS_API_SECRET }}
-      #          cool-sms.from-number: ${{ secrets.COOL_SMS_FROM_NUMBER }}
-      #          cool-sms.domain: ${{ secrets.COOL_SMS_DOMAIN }}
-      #          aws.s3.bucket: ${{ secrets.AWS_BUCKET }}
-      #          aws.s3.base-url: ${{ secrets.AWS_BASE_URL }}
-      #          aws.s3.access-key: ${{ secrets.AWS_S3_ACCESS_KEY }}
-      #          aws.s3.secret-key: ${{ secrets.AWS_S3_SECRET_KEY }}
+      - name: Set Environment - Common Yml
+        uses: microsoft/variable-substitution@v1
+        with:
+          files: ./src/main/resources/application.yml
+        env:
+          #          oauth.kakao.base-url: ${{ secrets.KAKAO_BASE_URL }}
+          #          oauth.kakao.client-id: ${{ secrets.KAKAO_CLIENT }}
+          #          oauth.kakao.client-secret: ${{ secrets.KAKAO_SECRET }}
+          #          oauth.kakao.redirect-url: ${{ secrets.KAKAO_REDIRECT }}
+          #          oauth.kakao.app-id: ${{ secrets.KAKAO_APP_ID }}
+          #          oauth.kakao.admin-key: ${{ secrets.KAKAO_ADMIN_KEY }}
+          jwt.secret: ${{ secrets.JWT_SECRET_KEY }}
+          spring.datasource.username: ${{ secrets.AWS_DB_USERNAME }}
+          spring.datasource.password: ${{ secrets.AWS_DB_PASSWORD }}
+          spring.datasource.url: ${{ secrets.AWS_DB_URL }}
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
         shell: bash # (6).권한 부여
