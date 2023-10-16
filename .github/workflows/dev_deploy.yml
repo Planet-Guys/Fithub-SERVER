@@ -20,17 +20,6 @@ jobs:
           java-version: 17 # (5).자바 설치
           distribution: 'adopt'
 
-      - name: Set Environment
-        uses: microsoft/variable-substitution@v1
-        with:
-          files: ./src/main/resources/application.yml
-          format: yaml
-        env:
-          jwt.secret: ${{ secrets.JWT_SECRET_KEY }}
-          spring.datasource.username: ${{ secrets.AWS_DB_USERNAME }}
-          spring.datasource.password: ${{ secrets.AWS_DB_PASSWORD }}
-          spring.datasource.url: ${{ secrets.AWS_DB_URL }}
-
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
         shell: bash # (6).권한 부여
@@ -69,5 +58,5 @@ jobs:
           version_label: github-action-${{ steps.current-time.outputs.formattedTime }}
           region: ap-northeast-1
           deployment_package: deploy/deploy.zip
-          wait_for_environment_recovery: 60
+          wait_for_deployment: false
 
