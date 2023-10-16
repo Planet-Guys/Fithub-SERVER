@@ -25,12 +25,6 @@ jobs:
         with:
           files: ./src/main/resources/application.yml
         env:
-          #          oauth.kakao.base-url: ${{ secrets.KAKAO_BASE_URL }}
-          #          oauth.kakao.client-id: ${{ secrets.KAKAO_CLIENT }}
-          #          oauth.kakao.client-secret: ${{ secrets.KAKAO_SECRET }}
-          #          oauth.kakao.redirect-url: ${{ secrets.KAKAO_REDIRECT }}
-          #          oauth.kakao.app-id: ${{ secrets.KAKAO_APP_ID }}
-          #          oauth.kakao.admin-key: ${{ secrets.KAKAO_ADMIN_KEY }}
           jwt.secret: ${{ secrets.JWT_SECRET_KEY }}
           spring.datasource.username: ${{ secrets.AWS_DB_USERNAME }}
           spring.datasource.password: ${{ secrets.AWS_DB_PASSWORD }}
